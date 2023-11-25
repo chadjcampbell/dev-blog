@@ -4,16 +4,22 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            src="chadLinkedIn.webp"
-            className="h-10 rounded-full"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            CJC Dev Blog
-          </span>
-        </a>
+        <div className="flex items-center justify-center">
+          <a
+            href="#"
+            className="flex items-center space-x-3 rtl:space-x-reverse mr-5"
+          >
+            <img
+              src="chadLinkedIn.webp"
+              className="h-10 rounded-full"
+              alt="Chad Campbell pic"
+            />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              CJC Dev Blog
+            </span>
+          </a>
+          <DarkThemeToggle />
+        </div>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -31,9 +37,9 @@ const Navbar = () => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M1 1h15M1 7h15M1 13h15"
             />
           </svg>
@@ -77,7 +83,6 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <DarkThemeToggle />
       </div>
     </nav>
   );
