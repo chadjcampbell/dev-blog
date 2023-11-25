@@ -1,4 +1,4 @@
-import Hero from "./components/Hero";
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "flowbite";
 
@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Hero />
+      <Outlet />
     </>
   );
 }
