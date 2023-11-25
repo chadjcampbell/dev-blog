@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <section className="bg-white dark:bg-gray-900 min-h-[95vh] flex items-center">
@@ -26,8 +28,8 @@ const Hero = () => {
             ></path>
           </svg>
         </a>
-        <h1 className="mb-4 mt-10 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-          Welcome to my developer portfolio
+        <h1 className="mb-10 mt-10 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+          Welcome to my developer blog
         </h1>
         <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
           This is where I share my thoughts on things I've learned related to
@@ -36,8 +38,8 @@ const Hero = () => {
           let me know in the post comments. 😉
         </p>
         <div className="flex flex-col mb-8 mt-16 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-          <a
-            href="#"
+          <Link
+            to="/blogs"
             className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
           >
             To the blogs!
@@ -53,21 +55,28 @@ const Hero = () => {
                 clipRule="evenodd"
               ></path>
             </svg>
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/contact"
             className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >
             <svg
-              className="mr-2 -ml-1 w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+              className="w-6 h-6 mr-2 text-gray-800 dark:text-white"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 18"
             >
-              <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 5h9M5 9h5m8-8H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h4l3.5 4 3.5-4h5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"
+              />
             </svg>
             Reach out
-          </a>
+          </Link>
         </div>
       </div>
     </section>

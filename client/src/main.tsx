@@ -7,6 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Hero from "./components/Hero.tsx";
 import About from "./components/About.tsx";
 import ErrorPage from "./components/ErrorPage.tsx";
+import Blogs from "./components/Blogs.tsx";
+import Contact from "./components/Contact.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
     ],
   },

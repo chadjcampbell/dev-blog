@@ -5,8 +5,12 @@ import "flowbite";
 function App() {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }
