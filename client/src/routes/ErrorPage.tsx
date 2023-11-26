@@ -4,8 +4,9 @@ const ErrorPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
-        <img src="404.jpg" alt="404 image" width="400px" />
-        <h1 className="text-4xl font-bold text-red-500 mb-4">404 Not Found</h1>
+        <h1 className="text-4xl font-bold text-red-500 mb-4">
+          Error 404 - Page Not Found
+        </h1>
         <p className="text-gray-600 mb-10">
           Oops! The page you are looking for does not exist.
         </p>

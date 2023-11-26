@@ -11,20 +11,19 @@ const About = () => {
             and the boundless possibilities that come with stepping outside
             one's comfort zone. Here, I share my odyssey from sales, finance,
             and management to code repos, bugs battled, and the never ending
-            list of languages and tools to learn. Recounting the challenges
-            faced, the victories won, and the invaluable lessons learned along
-            the way. As a neophyte in the realm of programming, I aim to
-            demystify the coding journey for fellow career explorers and
-            demonstrate that it's never too late to embrace a new skill set.
+            list of languages and tools to learn. As a neophyte in the realm of
+            programming, I aim to demystify the journey for fellow code
+            explorers and demonstrate that it's never too late to embrace a new
+            skill set.
           </p>
           <p>
             Join me as I navigate the intricate pathways of coding syntax,
             grapple with debugging puzzles, and ultimately, craft meaningful
             full stack web applications. Whether you're a career transitioner, a
-            coding enthusiast, or just someone curious about the fusion of
-            business acumen and programming prowess, let's traverse this
-            uncharted terrain together. Welcome to my digital memoir—a fusion of
-            sales savvy and code charisma.
+            long time coding enthusiast, or just someone curious about the
+            fusion of business acumen and programming prowess, let's traverse
+            this uncharted terrain together. Welcome to my digital memoir—a
+            fusion of sales savvy and code charisma.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-8">

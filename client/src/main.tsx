@@ -4,11 +4,11 @@ import App from "./App.tsx";
 import "./index.css";
 import { Flowbite } from "flowbite-react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Hero from "./components/Hero.tsx";
-import About from "./components/About.tsx";
-import ErrorPage from "./components/ErrorPage.tsx";
-import Blogs from "./components/Blogs.tsx";
-import Contact from "./components/Contact.tsx";
+import Hero from "./routes/Hero.tsx";
+import About from "./routes/About.tsx";
+import ErrorPage from "./routes/ErrorPage.tsx";
+import Blogs from "./routes/Blogs.tsx";
+import Contact from "./routes/Contact.tsx";
 
 const router = createBrowserRouter([
   {
