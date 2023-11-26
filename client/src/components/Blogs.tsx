@@ -25,25 +25,29 @@ const Blogs = () => {
                 </svg>
                 Tutorial
               </span>
-              <span className="text-sm">14 days ago</span>
+              <span className="text-sm">11/26/2023</span>
             </div>
             <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              <a href="#">How to quickly deploy a static website</a>
+              <a href="#">
+                React Routers <i>createBrowserRouter</i>
+              </a>
             </h2>
             <p className="mb-5 font-light text-gray-500 dark:text-gray-400">
-              Static websites are now used to bootstrap lots of websites and are
-              becoming the basis for a variety of tools that even influence both
-              web designers and developers influence both web designers and
-              developers.
+              This is the recommended router for all React Router web projects.
+              It uses the DOM History API to update the URL and manage the
+              history stack. It also enables the v6.4 data APIs like loaders,
+              actions, fetchers and more.
             </p>
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-4">
                 <img
                   className="w-7 h-7 rounded-full"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                  alt="Jese Leos avatar"
+                  src="chadLinkedIn.webp"
+                  alt="Chad Campbell avatar"
                 />
-                <span className="font-medium dark:text-white">Jese Leos</span>
+                <span className="font-medium dark:text-white">
+                  Chad J Campbell
+                </span>
               </div>
               <a
                 href="#"
@@ -83,7 +87,7 @@ const Blogs = () => {
                 </svg>
                 Article
               </span>
-              <span className="text-sm">14 days ago</span>
+              <span className="text-sm">11/21/2023</span>
             </div>
             <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               <a href="#">Our first project with React</a>
@@ -98,11 +102,11 @@ const Blogs = () => {
               <div className="flex items-center space-x-4">
                 <img
                   className="w-7 h-7 rounded-full"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                  alt="Bonnie Green avatar"
+                  src="chadLinkedIn.webp"
+                  alt="Chad Campbell avatar"
                 />
                 <span className="font-medium dark:text-white">
-                  Bonnie Green
+                  Chad J Campbell
                 </span>
               </div>
               <a

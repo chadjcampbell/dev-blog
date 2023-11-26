@@ -4,8 +4,8 @@ const Hero = () => {
   return (
     <section className="bg-white dark:bg-gray-900 min-h-[95vh] flex items-center">
       <div className=" py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-        <a
-          href="#"
+        <Link
+          to="/blogs"
           className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-10 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
           role="alert"
         >
@@ -27,7 +27,7 @@ const Hero = () => {
               clipRule="evenodd"
             ></path>
           </svg>
-        </a>
+        </Link>
         <h1 className="mb-10 mt-10 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           Welcome to my developer blog
         </h1>
