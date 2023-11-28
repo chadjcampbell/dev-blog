@@ -8,7 +8,7 @@ type BlogCardProps = {
 };
 
 const BlogCard = ({ title, summary, date, type }: BlogCardProps) => {
-  const blogURL = "blogs/" + title.split(" ").join("").toLowerCase();
+  const blogURL = title.split(" ").join("").toLowerCase();
   return (
     <article className="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <div className="flex justify-between items-center mb-5 text-gray-500">

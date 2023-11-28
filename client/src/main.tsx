@@ -9,6 +9,7 @@ import About from "./routes/About.tsx";
 import ErrorPage from "./routes/ErrorPage.tsx";
 import Blogs from "./routes/Blogs.tsx";
 import Contact from "./routes/Contact.tsx";
+import ReactRouterCreateBrowserRouter from "./routes/eachBlog/ReactRouterCreateBrowserRouter.tsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      // individual blogs here
+      {
+        path: "blogs/reactrouterscreatebrowserrouter",
+        element: <ReactRouterCreateBrowserRouter />,
       },
     ],
   },
