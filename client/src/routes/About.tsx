@@ -30,14 +30,14 @@ const About = () => {
           <a href="https://github.com/chadjcampbell" target="_blank">
             <img
               className="w-full rounded-lg border-solid border-2 border-black dark:border-white hover:scale-105 transform transition duration-500"
-              src="githubss.png"
+              src="/githubss.png"
               alt="chads github"
             />
           </a>
           <a href="https://chadjcampbell.com/" target="_blank">
             <img
               className="mt-4 w-full lg:mt-10 rounded-lg border-solid border-2 border-black dark:border-white hover:scale-105 transform transition duration-500"
-              src="portfolioss.png"
+              src="/portfolioss.png"
               alt="chads portfolio"
             />
           </a>

@@ -55,7 +55,7 @@ const BlogCard = ({ title, summary, date, type }: BlogCardProps) => {
         <div className="flex items-center space-x-4">
           <img
             className="w-7 h-7 rounded-full"
-            src="chadLinkedIn.webp"
+            src="/chadLinkedIn.webp"
             alt="Chad Campbell avatar"
           />
           <span className="font-medium dark:text-white">Chad J Campbell</span>
