@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   darkMode: "class",
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -25,5 +26,5 @@ export default {
       },
     },
   },
-  plugins: ["flowbite/plugin"],
+  plugins: [require("flowbite/plugin"), require("flowbite-typography")],
 };

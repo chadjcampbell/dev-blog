@@ -11,7 +11,7 @@ const Navbar = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse mr-5"
           >
             <img
-              src="./chadLinkedIn.webp"
+              src="chadLinkedIn.webp"
               className="h-10 rounded-full"
               alt="Chad Campbell pic"
             />
