@@ -1,4 +1,4 @@
-import EachComment from "./Comment";
+import EachComment from "./EachComment";
 
 const CommentSection = () => {
   return (
