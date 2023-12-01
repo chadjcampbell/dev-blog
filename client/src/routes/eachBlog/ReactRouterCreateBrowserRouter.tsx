@@ -1,3 +1,4 @@
+import CodeSnippet from "../../components/CodeSnippet";
 import CommentSection from "../../components/CommentSection";
 
 const ReactRouterCreateBrowserRouter = () => {
@@ -44,18 +45,23 @@ const ReactRouterCreateBrowserRouter = () => {
 
           <h2>Step 1: Create a new Vite React app</h2>
           <p>Open your terminal and run the following commands:</p>
-          <pre id="code">
-            <code>
-              npm create vite@latest my-react-router-app --template react cd
-              <br />
-              my-react-router-app
-            </code>
-          </pre>
+          <CodeSnippet
+            lang="bash"
+            code={`
+          npm create vite@latest my-react-router-app --template react 
+          cd my-react-router-app
+          `}
+          />
+
           <h2>Step 2: Install React Router</h2>
           <p>In your project directory, install React Router:</p>
-          <pre>
-            <code>npm install react-router-dom</code>
-          </pre>
+          <CodeSnippet
+            lang="bash"
+            code={`
+          npm install react-router-dom
+          `}
+          />
+
           <h2>Step 3: Create your components</h2>
           <p>
             Create two simple components, <strong>Home.jsx</strong> and{" "}
