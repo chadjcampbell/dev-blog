@@ -1,8 +1,10 @@
-// CodeSnippet.js
 import { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import ClipboardJS from "clipboard";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { IoIosCopy, IoIosCheckmarkCircleOutline } from "react-icons/io";
+import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 type CodeSnippetProps = {
   code: string;
@@ -10,40 +12,49 @@ type CodeSnippetProps = {
 };
 
 const CodeSnippet = ({ code, lang }: CodeSnippetProps) => {
-  const [isCopied, setIsCopied] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const notify = () => {
+    toast("Copied to clipboard!");
+    copy();
+  };
 
-  const handleCopyClick = () => {
-    const clipboard = new ClipboardJS(".copy-button");
-
-    clipboard.on("success", () => {
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 1500);
-      clipboard.destroy();
-    });
-
-    clipboard.on("error", () => {
-      console.error("Unable to copy to clipboard.");
-      clipboard.destroy();
-    });
+  const copy = () => {
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
   };
 
   return (
     <div className="relative">
-      <SyntaxHighlighter
-        language={lang}
-        style={a11yDark}
-        customStyle={{ fontSize: "1.2rem" }}
-      >
+      <div className="absolute flex flex-row items-center top-0 right-0 pr-1">
+        <span className="m-1 basis-3/4 text-xs">{lang}</span>
+        <button>
+          <CopyToClipboard text={code} onCopy={notify}>
+            {copied ? (
+              <IoIosCheckmarkCircleOutline
+                size="1.5rem"
+                className="m-1 text-green-500 basis-1/4"
+              />
+            ) : (
+              <IoIosCopy
+                size="1.5rem"
+                className="m-1 basis-1/4 hover:text-white"
+              />
+            )}
+          </CopyToClipboard>
+        </button>
+      </div>
+      <SyntaxHighlighter className="" language={lang} style={a11yDark}>
         {code}
       </SyntaxHighlighter>
-      <button
-        className="absolute top-2 right-2 px-2 py-1 bg-gray-800 text-white rounded hover:bg-gray-600 focus:outline-none"
-        onClick={handleCopyClick}
-      >
-        {isCopied ? "Copied!" : "Copy"}
-      </button>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar
+        theme="dark"
+      />
     </div>
   );
 };
-
 export default CodeSnippet;
