@@ -46,7 +46,9 @@ const CodeSnippet = ({ code, lang }: CodeSnippetProps) => {
         </button>
       </div>
       <SyntaxHighlighter
-        customStyle={{ paddingLeft: "0" }}
+        customStyle={{
+          fontSize: "20px",
+        }}
         language={lang}
         style={a11yDark}
       >

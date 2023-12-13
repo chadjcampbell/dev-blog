@@ -2,9 +2,9 @@ import BlogCard from "../components/BlogCard";
 
 const blogArr = [
   {
-    title: "React Routers createBrowserRouter",
+    title: "React Router Basics",
     summary:
-      "This is the recommended router for all React Router web projects. It uses the DOM History API to update the URL and manage the history stack. It also enables the v6.4 data APIs like loaders, actions, fetchers and more.",
+      "A step-by-step tutorial on using React Router with a Vite React app. This assumes you have Node.js and npm installed on your machine.",
     date: "11/26/2023",
     type: "tutorial",
   },
