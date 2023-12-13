@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { IoIosCopy, IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -45,7 +45,11 @@ const CodeSnippet = ({ code, lang }: CodeSnippetProps) => {
           </CopyToClipboard>
         </button>
       </div>
-      <SyntaxHighlighter className="" language={lang} style={a11yDark}>
+      <SyntaxHighlighter
+        customStyle={{ paddingLeft: "0" }}
+        language={lang}
+        style={a11yDark}
+      >
         {code}
       </SyntaxHighlighter>
       <ToastContainer
