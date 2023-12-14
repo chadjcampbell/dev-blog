@@ -46,6 +46,7 @@ npm create vite@latest my-react-router-app --template react
 cd my-react-router-app
           `}
           />
+          <p>When prompted select React, then Javascript (for simplicity)</p>
 
           <h2>Step 2: Install React Router</h2>
           <p>In your project directory, install React Router:</p>
@@ -63,7 +64,7 @@ npm install react-router-dom
             directory. For example:
           </p>
           <p>
-            <strong>src/components/Home.jsx:</strong>
+            <strong>src/Home.jsx:</strong>
           </p>
           <CodeSnippet
             lang="jsx"
@@ -81,7 +82,7 @@ export default Home;
           `}
           />
           <p>
-            <strong>src/components/About.jsx:</strong>
+            <strong>src/About.jsx:</strong>
           </p>
           <CodeSnippet
             lang="jsx"
@@ -105,7 +106,7 @@ export default About;
             directory. For example:
           </p>
           <p>
-            <strong>src/components/Routes.jsx:</strong>
+            <strong>src/Routes.jsx:</strong>
           </p>
           <CodeSnippet
             lang="jsx"
@@ -129,20 +130,24 @@ export default AppRoutes;
           <h2>Step 5: Use the Routes component in App.jsx</h2>
           <p>
             Update <strong>src/App.jsx</strong> to use the
-            <strong>Routes </strong>
-            component:
+            <strong> AppRoutes </strong>
+            component, and add some <strong>Link</strong> components for
+            navigation:
           </p>
           <CodeSnippet
             lang="jsx"
             code={`
-import './App.css';
-import AppRoutes from './components/Routes';
+import "./App.css";
+import AppRoutes from "./Routes";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <h1>React Router with Vite</h1>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
       </header>
       <main>
         <AppRoutes />
@@ -154,7 +159,30 @@ function App() {
 export default App;
           `}
           />
-          <h2>Step 6: Start your development server</h2>
+          <h2>Step 6: Wrap your whole app in a BrowserRouter in main.jsx</h2>
+          <p>
+            Update <strong>src/main.jsx</strong> to use the
+            <strong> BrowserRouter </strong>
+          </p>
+          <CodeSnippet
+            lang="jsx"
+            code={`
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+          `}
+          />
+          <h2>Step 7: Start your development server</h2>
           <p>Run the following command to start the development server:</p>
           <CodeSnippet
             lang="bash"
