@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 
 class CommentBase(BaseModel):
@@ -13,6 +14,7 @@ class CommentCreate(CommentBase):
 
 class Comment(CommentBase):
     id: int
+    created_at: datetime
 
     class Config:
         orm_mode = True
