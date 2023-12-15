@@ -3,15 +3,6 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# In-memory database (for testing purposes)
-comments = {}
-
-
-# Pydantic model for comment data
-class Comment(BaseModel):
-    name: str
-    comment: str
-
 
 # Read all comments for a given blog
 @app.get("/comments/{blog_name}", response_model=Comment)
