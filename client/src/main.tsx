@@ -10,6 +10,9 @@ import ErrorPage from "./routes/ErrorPage.tsx";
 import Blogs from "./routes/Blogs.tsx";
 import Contact from "./routes/Contact.tsx";
 import ReactRouterBasics from "./routes/eachBlog/ReactRouterBasics.tsx";
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -44,8 +47,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Flowbite>
-      <RouterProvider router={router} />
-    </Flowbite>
+    <QueryClientProvider client={queryClient}>
+      <Flowbite>
+        <RouterProvider router={router} />
+      </Flowbite>
+    </QueryClientProvider>
   </React.StrictMode>
 );
