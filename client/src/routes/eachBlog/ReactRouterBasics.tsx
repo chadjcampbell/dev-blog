@@ -197,7 +197,7 @@ npm run dev
             the provided links. That's it! You've successfully set up a Vite
             React app with React Router.
           </p>
-          <CommentSection />
+          <CommentSection blog="reactRouterBasics" />
         </article>
       </div>
     </div>

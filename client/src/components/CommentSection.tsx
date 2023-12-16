@@ -1,11 +1,36 @@
+import { useQueryClient, useQuery, useMutation } from "react-query";
 import EachComment from "./EachComment";
 
-const CommentSection = () => {
+type CommentSectionProps = {
+  blog: string;
+};
+
+export type CommentType = {
+  id: string;
+  blog: string;
+  name: string;
+  comment: string;
+  created_at: Date;
+};
+
+const CommentSection = ({ blog }: CommentSectionProps) => {
+  const queryClient = useQueryClient();
+
+  // Queries
+  const query = useQuery<CommentType[], Error>("comments", getComments(blog));
+
+  // Mutations
+  const mutation = useMutation(postComment(blog), {
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries("comments");
+    },
+  });
   return (
     <section className="not-format">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
-          Discussion (20)
+          Discussion {query.data?.length}
         </h2>
       </div>
       <form className="mb-6">
@@ -39,10 +64,9 @@ const CommentSection = () => {
           Post comment
         </button>
       </form>
-      <EachComment />
-      <EachComment />
-      <EachComment />
-      <EachComment />
+      {query.data?.map((comment: CommentType) => (
+        <EachComment key={comment.id} comment={comment} />
+      ))}
     </section>
   );
 };
