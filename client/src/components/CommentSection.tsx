@@ -1,39 +1,54 @@
-import { useQueryClient, useQuery, useMutation } from "react-query";
+import { useQuery, useMutation } from "react-query";
 import EachComment from "./EachComment";
+import { FormEvent } from "react";
+import axios from "axios";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 type CommentSectionProps = {
   blog: string;
 };
 
 export type CommentType = {
-  id: string;
+  id: number;
   blog: string;
   name: string;
   comment: string;
-  created_at: Date;
+  created_at: string;
 };
 
 const CommentSection = ({ blog }: CommentSectionProps) => {
-  const queryClient = useQueryClient();
+  const useComments = () => {
+    return useQuery("comments", async () => {
+      const { data } = await axios.get(`${BACKEND_URL}/comments/${blog}`);
+      return data;
+    });
+  };
 
-  // Queries
-  const query = useQuery<CommentType[], Error>("comments", getComments(blog));
+  const { status, data, isFetching } = useComments();
 
   // Mutations
-  const mutation = useMutation(postComment(blog), {
-    onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries("comments");
-    },
+  const mutation = useMutation((formData: FormData) => {
+    // Assuming postComment returns a Promise
+    return postComment(formData);
   });
+
+  const onSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    mutation.mutate(formData);
+  };
+
+  console.log(data);
+
   return (
     <section className="not-format">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
-          Discussion {query.data?.length}
+          Discussion {data?.length}
         </h2>
       </div>
-      <form className="mb-6">
+      <form className="mb-6" onSubmit={onSubmit}>
         <div className="py-2 px-4 mb-4">
           <label htmlFor="name" className="sr-only">
             Your name
@@ -64,9 +79,18 @@ const CommentSection = ({ blog }: CommentSectionProps) => {
           Post comment
         </button>
       </form>
-      {query.data?.map((comment: CommentType) => (
-        <EachComment key={comment.id} comment={comment} />
-      ))}
+      {status === "loading" ? (
+        "Loading..."
+      ) : status === "error" ? (
+        <p>Something went wrong</p>
+      ) : data.length == 0 ? (
+        <p>No comments yet</p>
+      ) : (
+        data?.map((comment: CommentType) => (
+          <EachComment key={comment.id} comment={comment} />
+        ))
+      )}
+      <div>{isFetching ? "Updating..." : " "}</div>
     </section>
   );
 };
