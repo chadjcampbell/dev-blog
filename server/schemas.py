@@ -6,7 +6,7 @@ class CommentBase(BaseModel):
     blog: str
     name: str
     comment: str
-    
+
 
 class CommentCreate(CommentBase):
     pass

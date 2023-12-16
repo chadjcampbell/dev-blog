@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 
-from . import models, schemas
+import models
+import schemas
 
 
 def get_comments(db: Session, blog_name: str, skip: int = 0, limit: int = 100):
@@ -8,7 +9,8 @@ def get_comments(db: Session, blog_name: str, skip: int = 0, limit: int = 100):
 
 
 def create_comment(db: Session, data: schemas.CommentCreate):
-    db_comment = models.Comment(blog=data.blog, name=data.name,comment=data.comment)
+    db_comment = models.Comment(
+        blog=data.blog, name=data.name, comment=data.comment)
     db.add(db_comment)
     db.commit()
     db.refresh(db_comment)

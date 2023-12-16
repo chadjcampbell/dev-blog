@@ -1,19 +1,30 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
+
+import crud
+import models
+import schemas
+from database import SessionLocal, engine
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 
-# Read all comments for a given blog
-@app.get("/comments/{blog_name}", response_model=Comment)
-async def read_comments(blog_name: str):
-    if len(comments[blog_name]) == 0:
-        raise HTTPException(status_code=404, detail="Comments not found")
-    return comments[blog_name]
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
-# Create an comment
-@app.post("/comments/{blog_name}", response_model=Comment)
-async def create_item(blog_name: str, comment: Comment):
-    new_comment = comments[blog_name].append(comment)
-    return new_comment
+@app.post("/comments/", response_model=schemas.Comment)
+def add_comment(data: schemas.CommentCreate, db: Session = Depends(get_db)):
+    return crud.create_comment(db, data=data)
+
+
+@app.get("/comments/{blog_name}", response_model=list[schemas.Comment])
+def read_comments(blog_name, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return crud.get_comments(db, blog_name, skip=skip, limit=limit)
