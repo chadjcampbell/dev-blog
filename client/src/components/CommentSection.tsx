@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import EachComment from "./EachComment";
 import { FormEvent } from "react";
 import axios from "axios";
@@ -18,6 +18,7 @@ export type CommentType = {
 };
 
 const CommentSection = ({ blog }: CommentSectionProps) => {
+  const queryClient = useQueryClient();
   const useComments = () => {
     return useQuery("comments", async () => {
       const { data } = await axios.get(`${BACKEND_URL}/comments/${blog}`);
@@ -27,19 +28,27 @@ const CommentSection = ({ blog }: CommentSectionProps) => {
 
   const { status, data, isFetching } = useComments();
 
-  // Mutations
-  const mutation = useMutation((formData: FormData) => {
-    // Assuming postComment returns a Promise
-    return postComment(formData);
-  });
+  const mutation = useMutation(
+    (formData: unknown) => {
+      return axios.post(`${BACKEND_URL}/comments/`, formData);
+    },
+    {
+      onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries("comments");
+      },
+    }
+  );
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const formData = new FormData(event.target as HTMLFormElement);
+    const formData = {
+      blog: blog,
+      name: event.target.name.value,
+      comment: event.target.comment.value,
+    };
     mutation.mutate(formData);
   };
-
-  console.log(data);
 
   return (
     <section className="not-format">
@@ -56,6 +65,7 @@ const CommentSection = ({ blog }: CommentSectionProps) => {
           <input
             type="text"
             id="name"
+            name="name"
             autoComplete="name"
             className="rounded-lg border border-gray-200 dark:border-gray-700 mx-2 w-full text-sm text-gray-900 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
             placeholder="Your name"
@@ -66,6 +76,7 @@ const CommentSection = ({ blog }: CommentSectionProps) => {
           </label>
           <textarea
             id="comment"
+            name="comment"
             rows={6}
             className="mt-4 rounded-lg border border-gray-200 dark:border-gray-700 mx-2 w-full text-sm text-gray-900 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
             placeholder="Write a comment..."

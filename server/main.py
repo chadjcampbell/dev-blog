@@ -1,4 +1,5 @@
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, HTTPException
+from pydantic import ValidationError
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 
