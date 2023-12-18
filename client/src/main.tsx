@@ -11,6 +11,7 @@ import Blogs from "./routes/Blogs.tsx";
 import Contact from "./routes/Contact.tsx";
 import ReactRouterBasics from "./routes/eachBlog/ReactRouterBasics.tsx";
 import { QueryClientProvider, QueryClient } from "react-query";
+import CS50xvsCS50p from "./routes/eachBlog/CS50xvsCS50p.tsx";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "blogs/reactrouterbasics",
         element: <ReactRouterBasics />,
+      },
+      {
+        path: "blogs/CS50xvsCS50p",
+        element: <CS50xvsCS50p />,
       },
     ],
   },
