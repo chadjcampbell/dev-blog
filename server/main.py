@@ -14,6 +14,7 @@ app = FastAPI()
 # CORS policies
 origins = [
     "http://localhost:5173",
+    "https://cjcdevblog.netlify.app"
 ]
 
 app.add_middleware(
