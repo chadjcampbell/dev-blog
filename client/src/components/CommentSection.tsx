@@ -99,7 +99,7 @@ const CommentSection = ({ blog }: CommentSectionProps) => {
         </button>
       </form>
       {status === "loading" ? (
-        "Loading..."
+        <p>Loading...</p>
       ) : status === "error" ? (
         <p>Something went wrong</p>
       ) : data.length == 0 ? (
