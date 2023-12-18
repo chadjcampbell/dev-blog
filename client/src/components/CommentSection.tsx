@@ -17,6 +17,12 @@ export type CommentType = {
   created_at: string;
 };
 
+type formDataType = {
+  blog: string;
+  name: string;
+  comment: string;
+};
+
 const CommentSection = ({ blog }: CommentSectionProps) => {
   const queryClient = useQueryClient();
   const useComments = () => {
@@ -29,7 +35,7 @@ const CommentSection = ({ blog }: CommentSectionProps) => {
   const { status, data, isFetching } = useComments();
 
   const mutation = useMutation(
-    (formData: unknown) => {
+    (formData: formDataType) => {
       return axios.post(`${BACKEND_URL}/comments/`, formData);
     },
     {
@@ -42,12 +48,14 @@ const CommentSection = ({ blog }: CommentSectionProps) => {
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
+    const form = event.target as HTMLFormElement;
     const formData = {
       blog: blog,
-      name: event.target.name.value,
-      comment: event.target.comment.value,
+      name: form.username.value,
+      comment: form.comment.value,
     };
     mutation.mutate(formData);
+    form.reset();
   };
 
   return (
@@ -64,8 +72,8 @@ const CommentSection = ({ blog }: CommentSectionProps) => {
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
+            id="username"
+            name="username"
             autoComplete="name"
             className="rounded-lg border border-gray-200 dark:border-gray-700 mx-2 w-full text-sm text-gray-900 focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
             placeholder="Your name"
