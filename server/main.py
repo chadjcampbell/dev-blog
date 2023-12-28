@@ -1,6 +1,7 @@
 from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
+from typing import List
 
 import crud
 import models
@@ -40,6 +41,6 @@ def add_comment(data: schemas.CommentCreate, db: Session = Depends(get_db)):
     return crud.create_comment(db, data=data)
 
 
-@app.get("/comments/{blog_name}", response_model=list[schemas.Comment])
+@app.get("/comments/{blog_name}", response_model=List[schemas.Comment])
 def read_comments(blog_name, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_comments(db, blog_name, skip=skip, limit=limit)
