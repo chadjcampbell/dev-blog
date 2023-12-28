@@ -5,7 +5,7 @@ import schemas
 
 
 def get_comments(db: Session, blog_name: str, skip: int = 0, limit: int = 100):
-    return db.query(models.Comment).where(models.Comment.blog == blog_name).offset(skip).limit(limit).all()
+    return db.query(models.Comment).where(models.Comment.blog == blog_name).order_by(models.Comment.created_at.desc()).offset(skip).limit(limit).all()
 
 
 def create_comment(db: Session, data: schemas.CommentCreate):
