@@ -1,3 +1,4 @@
+import moment from "moment";
 import { CommentType } from "./CommentSection";
 
 type EachCommentProps = {
@@ -13,7 +14,7 @@ const EachComment = ({ comment }: EachCommentProps) => {
             {comment.name}
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            <time>{String(comment.created_at)}</time>
+            <time>{moment(comment.created_at).calendar()}</time>
           </p>
         </div>
       </div>
